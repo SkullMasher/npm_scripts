@@ -18,7 +18,7 @@ This repo is heavily opiniated. It has been created mainly to test and refined m
  
 **app :** This is where your happy app lives and grow. If you are searching for a developper you have 99% chance to find him here. These are the uncompiled source of the application.
 
-**npm_scripts :** This Folder contains all script that can be called by the package.json file. They can be in any langage you like. Curently I mostly NodeJS script to get better with this technology.
+**node_scripts :** Just like the node modules but for npm_scripts. This Folder contains all script that can be called by the package.json file. They can be in any langage you like. Curently I mostly NodeJS script to get better with this technology.
 
 **start.js :** The purpose of this file is to start all the necesary action in order to start coding on the app. It usally lunch some kind of live reload server and your favorite browser that auto refresh when you press ctrl+s on your file editor. At eh moment this file also handle SASS file compilation and watch for .js and .html change. You can call this script by running **npm start** or **npm run start** at the root of your app in your terminal.
 
