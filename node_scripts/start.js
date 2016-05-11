@@ -1,6 +1,6 @@
 'use strict'
-
-let fs = require('fs')
+let Promise = require('bluebird')
+let fs = Promise.promisifyAll(require('fs'))
 let chalk = require('chalk')
 let dateFormat = require('dateformat')
 let sass = require('node-sass')
@@ -14,16 +14,34 @@ let log = console.log.bind(console)
 
 // add a / at the end
 let appFolderPath = 'app/'
+let cssFolderName = 'css/'
+let jsFolderName = 'js/'
+let imgFolderName = 'css/'
 
 // Greeting Message
-log(chalk.red('  #####   '))
-log(chalk.red(' #######  '))
-log(chalk.red('#  ###  # ') + chalk.grey(' The mighty Skull is starting your project.'))
-log(chalk.red('#   #   # '))
-log(chalk.red('######### ') + chalk.grey(' Happy coding !'))
-log(chalk.red(' ### ###  '))
-log(chalk.red('  #####   '))
-log(chalk.red('  # # #   ') + chalk.grey(' Play more, care less, be an heartless'))
+var greetingMessage = function () {
+  log(chalk.red('  #####   '))
+  log(chalk.red(' #######  '))
+  log(chalk.red('#  ###  # ') + chalk.grey(' The mighty Skull is starting your project.'))
+  log(chalk.red('#   #   # '))
+  log(chalk.red('######### ') + chalk.grey(' Happy coding !'))
+  log(chalk.red(' ### ###  '))
+  log(chalk.red('  #####   '))
+  log(chalk.red('  # # #   ') + chalk.grey(' Play more, care less, be an heartless'))
+}
+
+let pathChecker = function () {
+  fs.statAsync('app/keke.html').then(function (res) {
+    log(res)
+  })
+  .catch(function (err) {
+    log(err)
+  })
+}
+
+pathChecker()
+
+greetingMessage()
 
 // Reload all browser on HTML change
 bs.watch(appFolderPath + '*.html').on('change', function () {
@@ -69,6 +87,7 @@ bs.watch(appFolderPath + 'sass/**.scss', function (event, file) {
               }
             })
           } else {
+            log('error there')
             log(err)
           }
         })
@@ -80,6 +99,6 @@ bs.watch(appFolderPath + 'sass/**.scss', function (event, file) {
 })
 
 // Now init the Browsersync server
-bs.init({
-  server: './' + appFolderPath
-})
+// bs.init({
+//   server: './' + appFolderPath
+// })
