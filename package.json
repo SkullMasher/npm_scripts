@@ -1,0 +1,27 @@
+{
+  "name": "npm_scripts",
+  "version": "1.0.0",
+  "description": "A set of npm_scripts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkullMasher/npm_scripts.git"
+  },
+  "keywords": [
+    "npm",
+    "scripts"
+  ],
+  "author": "Skullmasher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SkullMasher/npm_scripts/issues"
+  },
+  "homepage": "https://github.com/SkullMasher/npm_scripts#readme",
+  "scripts": {
+    "start": "node node_scripts/start.js",
+    "build": "node node_scripts/build.js"
+  }
+}
