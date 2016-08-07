@@ -1,11 +1,16 @@
 'use strict'
 
-let Promise = require('bluebird')
-let chalk = require('chalk')
-let dateFormat = require('dateformat')
-let rmrf = require('rmfr')
-let compressor = require('node-minify')
-let Imagemin = require('imagemin')
+const Promise = require('bluebird')
+const chalk = require('chalk')
+const dateFormat = require('dateformat')
+const rmrf = require('rmfr')
+const compressor = require('node-minify')
+const imagemin = require('imagemin')
+const imageminJpegtran = require('imagemin-jpegtran')
+const imageminOptipng = require('imagemin-optipng')
+const imageminSvgo = require('imagemin-svgo')
+const imageminWebp = require('imagemin-webp')
+
 
 // http://bluebirdjs.com/docs/api/promisification.html
 let fs = Promise.promisifyAll(require('fs'))
@@ -123,21 +128,20 @@ let minifyJs = function () {
 
 let imgmin = function () {
   return new Promise(function (resolve, reject) {
-    return new Imagemin()
-      .src(appFolder + 'img/*.{gif,jpg,png,svg}')
-      .dest(buildFolderName + '/' + buildFolderNameImg)
-      .use(Imagemin.jpegtran({progressive: true}))
-      .use(Imagemin.svgo())
-      .use(Imagemin.optipng({optimizationLevel: 3}))
-      .use(Imagemin.gifsicle({interlaced: true}))
-      .run(function (err, files) {
-        if (err) {
-          reject(err)
-        } else {
-          log(chalk.green('[' + dateFormat(new Date(), 'HH:MM:ss') + '] ') + 'Images optimized')
-          resolve()
-        }
-      })
+    return imagemin([appFolder + 'img/*.{gif,jpg,png,svg,webp}'], buildFolderName + '/' + buildFolderNameImg, {
+      plugins: [
+        imageminJpegtran({progressive: true}),
+        imageminOptipng(),
+        imageminSvgo(),
+        imageminWebp({quality: 50})
+      ]
+    }).then(files => {
+      log(files.path)
+      log(chalk.green('[' + dateFormat(new Date(), 'HH:MM:ss') + '] ') + 'Images optimized')
+      resolve()
+    }).catch(err => {
+      reject(err)
+    })
   })
 }
 

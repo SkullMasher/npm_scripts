@@ -1,9 +1,9 @@
 {
 	"version": 3,
-	"file": "style.css",
+	"file": "app/css/style.css",
 	"sources": [
-		"../sass/style.scss"
+		"app/sass/style.scss"
 	],
-	"mappings": "AAAA,AAAA,IAAI,CAAC;EACJ,MAAM,EAAE,CAAE;EACV,gBAAgB,EAAE,IAAK;EACvB,KAAK,EAAE,IAAK;CACZ",
+	"mappings": "AAAA,AAAA,IAAI,CAAC;EACJ,MAAM,EAAE,CAAE;EACV,gBAAgB,EAAE,IAAK;EACvB,KAAK,EAAE,IAAK;CACZ;;AAED,AAAA,GAAG,CAAC;EACH,KAAK,EAAE,IAAK;EACZ,MAAM,EAAE,IAAK;CACb",
 	"names": []
 }

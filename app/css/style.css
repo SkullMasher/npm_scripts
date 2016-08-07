@@ -4,4 +4,9 @@ body {
   color: #fff;
 }
 
-/*# sourceMappingURL=style.css.map */
+img {
+  width: 100%;
+  height: auto;
+}
+
+/*# sourceMappingURL=../../style.map.css */
