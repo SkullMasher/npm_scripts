@@ -128,15 +128,15 @@ let minifyJs = function () {
 
 let imgmin = function () {
   return new Promise(function (resolve, reject) {
-    return imagemin([appFolder + 'img/*.{gif,jpg,png,svg,webp}'], buildFolderName + '/' + buildFolderNameImg, {
+    return imagemin([appFolder + 'img/*.{gif,jpg,png,svg}'], buildFolderName + '/' + buildFolderNameImg, {
       plugins: [
         imageminJpegtran({progressive: true}),
         imageminOptipng(),
-        imageminSvgo(),
-        imageminWebp({quality: 50})
+        imageminSvgo()
+        // imageminWebp({quality: 50})
       ]
     }).then(files => {
-      log(files.path)
+      log(files)
       log(chalk.green('[' + dateFormat(new Date(), 'HH:MM:ss') + '] ') + 'Images optimized')
       resolve()
     }).catch(err => {

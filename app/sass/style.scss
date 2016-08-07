@@ -1,3 +1,11 @@
+@import 'node_modules/lato-font/scss/public-api';
+
+$lato-font-path: '/node_modules/lato-font/fonts';
+
+@include lato-include-font('medium');
+@include lato-include-font('black');
+
+
 body {
 	margin: 0;
 	background-color: #333;
@@ -7,4 +15,8 @@ body {
 img {
 	width: 100%;
 	height: auto;
+}
+
+.font-test {
+	@include lato-font('black', italic);
 }

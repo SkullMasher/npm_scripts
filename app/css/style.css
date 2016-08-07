@@ -1,3 +1,39 @@
+/* Lato (medium, regular) */
+@font-face {
+  font-family: "Lato Medium";
+  src: url("/node_modules/lato-font/fonts/lato-medium/lato-medium.eot");
+  src: url("/node_modules/lato-font/fonts/lato-medium/lato-medium.eot?#iefix") format("embedded-opentype"), url("/node_modules/lato-font/fonts/lato-medium/lato-medium.woff") format("woff"), url("/node_modules/lato-font/fonts/lato-medium/lato-medium.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Lato (medium, italic) */
+@font-face {
+  font-family: "Lato Medium";
+  src: url("/node_modules/lato-font/fonts/lato-medium-italic/lato-medium-italic.eot");
+  src: url("/node_modules/lato-font/fonts/lato-medium-italic/lato-medium-italic.eot?#iefix") format("embedded-opentype"), url("/node_modules/lato-font/fonts/lato-medium-italic/lato-medium-italic.woff") format("woff"), url("/node_modules/lato-font/fonts/lato-medium-italic/lato-medium-italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Lato (black, regular) */
+@font-face {
+  font-family: Lato;
+  src: url("/node_modules/lato-font/fonts/lato-black/lato-black.eot");
+  src: url("/node_modules/lato-font/fonts/lato-black/lato-black.eot?#iefix") format("embedded-opentype"), url("/node_modules/lato-font/fonts/lato-black/lato-black.woff") format("woff"), url("/node_modules/lato-font/fonts/lato-black/lato-black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Lato (black, italic) */
+@font-face {
+  font-family: Lato;
+  src: url("/node_modules/lato-font/fonts/lato-black-italic/lato-black-italic.eot");
+  src: url("/node_modules/lato-font/fonts/lato-black-italic/lato-black-italic.eot?#iefix") format("embedded-opentype"), url("/node_modules/lato-font/fonts/lato-black-italic/lato-black-italic.woff") format("woff"), url("/node_modules/lato-font/fonts/lato-black-italic/lato-black-italic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
 body {
   margin: 0;
   background-color: #333;
@@ -7,6 +43,13 @@ body {
 img {
   width: 100%;
   height: auto;
+}
+
+.font-test {
+  /* Lato (black, italic) */
+  font-family: Lato;
+  font-weight: 900;
+  font-style: italic;
 }
 
 /*# sourceMappingURL=../../style.map.css */
