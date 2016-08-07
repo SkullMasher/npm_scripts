@@ -3,7 +3,7 @@
 let Promise = require('bluebird')
 let chalk = require('chalk')
 let dateFormat = require('dateformat')
-let rimraf = require('rimraf-promise')
+let rmrf = require('rmfr')
 let compressor = require('node-minify')
 let Imagemin = require('imagemin')
 
@@ -41,7 +41,7 @@ log(chalk.red('  # # #   ') + chalk.grey(' Play more, care less, be an heartless
 
 let cleanDistFolder = function () {
   log('lodr')
-  return rimraf(buildFolderName)
+  return rmrf(buildFolderName)
     .then(function (res) {
       log(chalk.green('[' + dateFormat(new Date(), 'HH:MM:ss') + '] ') + 'Old build folder cleaned')
     })
