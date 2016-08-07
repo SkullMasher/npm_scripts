@@ -14,7 +14,6 @@ const imageminWebp = require('imagemin-webp')
 
 // http://bluebirdjs.com/docs/api/promisification.html
 let fs = Promise.promisifyAll(require('fs'))
-let mkdirp = Promise.promisifyAll(require('mkdirp'))
 let ncp = Promise.promisifyAll(require('ncp'))
 
 // console.log for 1337 h4X0r
