@@ -82,7 +82,6 @@ bs.watch(appPath.appFolderPath + appPath.sassFolderName + '**.scss', function (e
               }
             })
           } else {
-            log('error there')
             log(err)
           }
         })
