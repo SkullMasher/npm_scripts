@@ -22,8 +22,6 @@ let appPath = {
   imgFolderName: 'css/'
 }
 
-let catchError = function (err) { log(err) }
-
 // Greeting Message
 var greetingMessage = function () {
   log(chalk.red('  #####   '))
@@ -57,7 +55,7 @@ bs.watch(appPath.appFolderPath + appPath.sassFolderName + '**.scss', function (e
       file: appPath.appFolderPath + appPath.sassFolderName + 'style.scss',
       outputStyle: 'expanded',
       outFile: appPath.appFolderPath + appPath.cssFolderName + 'style.css',
-      sourceMap: 'style.map.css'
+      sourceMap: appPath.appFolderPath + appPath.cssFolderName + 'style.map.css'
     }, function (error, result) {
       if (error) {
         // Pretty Debug Message on sass error
