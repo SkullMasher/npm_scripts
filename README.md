@@ -1,13 +1,13 @@
 # npm_scripts
-Set of npm_scripts to build and start a WebApp
+Set of npm_scripts to build and develop small website.
 
-In a web app I want npm scripts to be in a folder called npm_scripts.
-
-These scripts handles webapp build and developement process for exemple. Either way they don't clog up the main app repositories.
-
-## Purpose
-
-This repo is heavily opiniated. It has been created mainly to test and refined my workflow with npm_scripts.
+## How to use
+```
+npm start
+```
+```
+npm run build
+```
 
 ## Struture
 	app
