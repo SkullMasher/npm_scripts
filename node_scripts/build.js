@@ -135,7 +135,6 @@ let imgmin = function () {
         // imageminWebp({quality: 50})
       ]
     }).then(files => {
-      log(files)
       log(chalk.green('[' + dateFormat(new Date(), 'HH:MM:ss') + '] ') + 'Images optimized')
       resolve()
     }).catch(err => {

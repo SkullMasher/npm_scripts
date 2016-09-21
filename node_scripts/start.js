@@ -10,10 +10,7 @@ let bs = require('browser-sync').create()
 // console.log for 1337 h4X0r
 let log = console.log.bind(console)
 
-// ISO date format to use for debuging
-// let now = new Date()
-
-// add a / at the end
+// add a '/' at the end
 let appPath = {
   appFolderPath: 'app/',
   cssFolderName: 'css/',
@@ -22,8 +19,14 @@ let appPath = {
   imgFolderName: 'css/'
 }
 
+// Set to true for serving php for exemple
+let isProxy = false
+
+// If isProxy is enable specify the path URL where the project files are
+let proxyURL = 'http://localhost/~user/wordpress-site/'
+
 // Greeting Message
-var greetingMessage = function () {
+let greetingMessage = function () {
   log(chalk.red('  #####   '))
   log(chalk.red(' #######  '))
   log(chalk.red('#  ###  # ') + chalk.grey(' The mighty Skull is starting your project.'))
@@ -90,7 +93,17 @@ bs.watch(appPath.appFolderPath + appPath.sassFolderName + '**.scss', function (e
   }
 })
 
+let startBrowserSync = function () {
+  if (isProxy) {
+    return bs.init({
+      proxy: proxyURL
+    })
+  } else {
+    return bs.init({
+      server: './' + appPath.appFolderPath
+    })
+  }
+}
+
 // Now init the Browsersync server
-bs.init({
-  server: './' + appPath.appFolderPath
-})
+startBrowserSync()
