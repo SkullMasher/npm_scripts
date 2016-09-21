@@ -9,8 +9,6 @@ const imagemin = require('imagemin')
 const imageminJpegtran = require('imagemin-jpegtran')
 const imageminOptipng = require('imagemin-optipng')
 const imageminSvgo = require('imagemin-svgo')
-const imageminWebp = require('imagemin-webp')
-
 
 // http://bluebirdjs.com/docs/api/promisification.html
 let fs = Promise.promisifyAll(require('fs'))
@@ -20,8 +18,6 @@ let ncp = Promise.promisifyAll(require('ncp'))
 let log = console.log.bind(console)
 
 let catchError = function (err) { console.error(err) }
-
-let nowFormat = dateFormat(new Date(), 'HH:MM:ss')
 
 // File & folder path used by this program
 let appFolder = 'app/'

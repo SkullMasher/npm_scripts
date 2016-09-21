@@ -41,13 +41,12 @@ greetingMessage()
 
 // Reload all browser on HTML change
 bs.watch(appPath.appFolderPath + '*.html').on('change', function () {
-  bs.notify("<span color='green'>HTML Reloaded</span>", 2000)
   bs.reload()
 })
 
 // Reload all browser on JS change
 bs.watch(appPath.appFolderPath + appPath.jsFolderName + '**.js').on('change', function () {
-  bs.notify("<span color='green'>JS Reloaded</span>", 2000)
+  
   bs.reload()
 })
 
@@ -77,7 +76,6 @@ bs.watch(appPath.appFolderPath + appPath.sassFolderName + '**.scss', function (e
               if (!err) {
                 let nowFormat = dateFormat(new Date(), '[HH:MM:ss]')
                 log(nowFormat + chalk.green(' CSS Reloaded'))
-                bs.notify("<span color='green'>CSS Reloaded</span>", 2000)
               } else {
                 log(err)
               }
