@@ -14,11 +14,6 @@ const imageminSvgo = require('imagemin-svgo')
 let fs = Promise.promisifyAll(require('fs'))
 let ncp = Promise.promisifyAll(require('ncp'))
 
-// console.log for 1337 h4X0r
-let log = console.log.bind(console)
-
-let catchError = function (err) { console.error(err) }
-
 // File & folder path used by this program
 let appFolder = 'app/'
 let buildFolderName = 'dist'
@@ -28,6 +23,15 @@ let buildFolderNameImg = 'img'
 let fontFolderName = 'font'
 let cssFileName = 'style.css'
 let jsFileName = 'script.js'
+let extraFoldersToCopy = []
+/*
+ * You should not have to edit stuff beyond this warning
+ */
+
+// console.log for 1337 h4X0r
+let log = console.log.bind(console)
+
+let catchError = function (err) { console.error(err) }
 
 // Greeting Message
 log(chalk.red('  #####   '))
@@ -53,11 +57,12 @@ let cleanDistFolder = function () {
 let copyFile = function (source, target) {
   return new Promise(function (resolve, reject) {
     let rd = fs.createReadStream(source)
+    let wr = fs.createWriteStream(target)
+
     rd.on('error', function (err) {
       reject(err)
     })
 
-    let wr = fs.createWriteStream(target)
     wr.on('error', function (err) {
       reject(err)
     })
@@ -155,14 +160,11 @@ let copyHtml = function () {
     .catch(console.err)
 }
 
-/*
- * TODO
- * Put all these in a promise.all or something
- * http://bluebirdjs.com/docs/api-reference.html
- *
- * copy all the html file in the root on the dist directory
- *
- */
+let copyExtraFolder = function () {
+  return Promise.all(extraFoldersToCopy.map(function (folder) {
+    return
+  }))
+}
 
 cleanDistFolder()
   .then(minifyCss)
@@ -170,4 +172,5 @@ cleanDistFolder()
   .then(imgmin)
   .then(copyHtml)
   .then(copyFont)
+  .then(copyExtraFolder)
   .catch(catchError)

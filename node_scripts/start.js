@@ -25,6 +25,10 @@ let isProxy = false
 // If isProxy is enable specify the path URL where the project files are
 let proxyURL = 'http://localhost/~user/wordpress-site/'
 
+/*
+ * You should not have to edit stuff beyond this warning
+ */
+
 // Greeting Message
 let greetingMessage = function () {
   log(chalk.red('  #####   '))
