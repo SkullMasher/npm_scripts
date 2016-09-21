@@ -46,7 +46,6 @@ bs.watch(appPath.appFolderPath + '*.html').on('change', function () {
 
 // Reload all browser on JS change
 bs.watch(appPath.appFolderPath + appPath.jsFolderName + '**.js').on('change', function () {
-  
   bs.reload()
 })
 
