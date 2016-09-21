@@ -5,22 +5,23 @@ In a web app I want npm scripts to be in a folder called node_scripts.
 
 These scripts handles webapp build and developement process and other things necessary.
 
-## Purpose
-
-This repo is heavily opiniated. It has been created mainly to test and refined my workflow with npm_scripts.
-
 ## How to use
 
-Start codding your web project with
+Depending on what you are doing it is advised to copy, add or modify the script in the node_scripts folder. 
+
+Run either of those command in the terminal at the root of your project.
+
+To start codding
 ```
 npm start
 ```
-Pack your web project for production by running
+Pack your web project for production
 ```
 npm run build
 ```
 
 ## Struture
+
 	app
 	node_scripts
 		start.js
@@ -36,3 +37,7 @@ npm run build
 **build.js :** Prepare a folder or an archive for server ready deployement. Curently minify the css and js files through node-minify. **npm run build** in your terminal to use this file. By the end you will have a build or dist folder placed at the root of your app.
 
 **package.json :** Adding a "scripts" section in this file alwoys you to setup actions to take when instaling or building an application. To know what you can do with it and see the reserved action like prebuild or preinstall are [follow the documentation](https://docs.npmjs.com/misc/scripts).
+
+## Motivation behind this project
+
+Got sick of random error I did not understand popping in my terminal each time I used Grunt or Gulp. So I started researching how to do my own tooling scripts. They are not has good has the other tooling solution for sure but I prefer to have a solution that I can understand and refind with ease.
