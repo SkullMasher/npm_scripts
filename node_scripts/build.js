@@ -23,7 +23,10 @@ let buildFolderNameImg = 'img'
 let fontFolderName = 'font'
 let cssFileName = 'style.css'
 let jsFileName = 'script.js'
-let extraFoldersToCopy = []
+let extraFoldersToCopy = [
+  'inc',
+  'template-parts'
+]
 /*
  * You should not have to edit stuff beyond this warning
  */
@@ -56,27 +59,37 @@ let cleanDistFolder = function () {
 // https://stackoverflow.com/questions/11293857/fastest-way-to-copy-file-in-node-js
 let copyFile = function (source, target) {
   return new Promise(function (resolve, reject) {
-    let rd = fs.createReadStream(source)
-    let wr = fs.createWriteStream(target)
+    let readStream = fs.createReadStream(source)
+    let writeStream = fs.createWriteStream(target)
 
-    rd.on('error', function (err) {
-      reject(err)
-    })
+    readStream
+      .on('error', function (err) {
+        reject(err)
+      })
 
-    wr.on('error', function (err) {
-      reject(err)
-    })
-    wr.on('close', function (ex) {
-      resolve()
-    })
+    writeStream
+      .on('error', function (err) {
+        reject(err)
+      })
+      .on('close', function (ex) {
+        resolve()
+      })
 
-    rd.pipe(wr)
+    return readStream.pipe(writeStream)
   })
+}
+
+let copyFolder = function (folderName) {
+  return ncp.ncpAsync(appFolder + folderName, buildFolderName + '/' + folderName)
+    .then(function () {
+      log(chalk.green('[' + dateFormat(new Date(), 'HH:MM:ss') + '] ') + folderName + ' folder copied')
+    })
+    .catch(console.err)
 }
 
 let compressCss = function () {
   return new Promise(function (resolve, reject) {
-    new compressor.minify({
+    return new compressor.minify({
       type: 'clean-css',
       fileIn: appFolder + buildFolderNameCss + '/' + cssFileName,
       fileOut: buildFolderName + '/' + buildFolderNameCss + '/' + cssFileName,
@@ -93,7 +106,7 @@ let compressCss = function () {
 
 let compressJs = function () {
   return new Promise(function (resolve, reject) {
-    new compressor.minify({
+    return new compressor.minify({
       type: 'uglifyjs',
       fileIn: appFolder + buildFolderNameJs + '/' + jsFileName,
       fileOut: buildFolderName + '/' + buildFolderNameJs + '/' + jsFileName,
@@ -162,7 +175,7 @@ let copyHtml = function () {
 
 let copyExtraFolder = function () {
   return Promise.all(extraFoldersToCopy.map(function (folder) {
-    return
+    return copyFolder(folder)
   }))
 }
 
