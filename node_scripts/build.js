@@ -23,7 +23,11 @@ let buildFolderNameImg = 'img'
 let fontFolderName = 'font'
 let cssFileName = 'style.css'
 let jsFileName = 'script.js'
-let extraFoldersToCopy = [
+let copyExtraFile = [
+  'contact.php',
+  'about.html'
+]
+let copyExtraFolder = [
   'inc',
   'template-parts'
 ]
@@ -173,7 +177,7 @@ let copyHtml = function () {
 }
 
 let copyExtraFolder = function () {
-  return Promise.all(extraFoldersToCopy.map(function (folder) {
+  return Promise.all(copyExtraFolder.map(function (folder) {
     return copyFolder(folder)
   }))
 }
