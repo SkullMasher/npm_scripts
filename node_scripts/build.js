@@ -23,14 +23,15 @@ let buildFolderNameImg = 'img'
 let fontFolderName = 'font'
 let cssFileName = 'style.css'
 let jsFileName = 'script.js'
-let copyExtraFile = [
+let extraFilesToCopy = [
   'contact.php',
   'about.html'
 ]
-let copyExtraFolder = [
+let extraFolderToCopy = [
   'inc',
   'template-parts'
 ]
+
 /*
  * You should not have to edit stuff beyond this warning
  */
@@ -177,8 +178,14 @@ let copyHtml = function () {
 }
 
 let copyExtraFolder = function () {
-  return Promise.all(copyExtraFolder.map(function (folder) {
+  return Promise.all(extraFolderToCopy.map(function (folder) {
     return copyFolder(folder)
+  }))
+}
+
+let copyExtraFile = function () {
+  return Promise.all(extraFilesToCopy.map(function (file) {
+    return copyFile(appFolder + file, buildFolderName + '/' + file)
   }))
 }
 
@@ -189,4 +196,5 @@ cleanDistFolder()
   .then(copyHtml)
   .then(copyFont)
   .then(copyExtraFolder)
+  .then(copyExtraFile)
   .catch(catchError)
