@@ -47,7 +47,6 @@ log(chalk.red('  #####   '))
 log(chalk.red('  # # #   ') + chalk.grey(' Play more, care less, be an heartless'))
 
 let cleanDistFolder = function () {
-  log('lodr')
   return rmrf(buildFolderName)
     .then(function (res) {
       log(chalk.green('[' + dateFormat(new Date(), 'HH:MM:ss') + '] ') + 'Old build folder cleaned')
