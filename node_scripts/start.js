@@ -54,7 +54,7 @@ bs.watch(appPath.appFolderPath + appPath.jsFolderName + '**.js').on('change', fu
 })
 
 // Specific compilation for SASS file
-bs.watch(appPath.appFolderPath + appPath.sassFolderName + '**.scss', function (event, file) {
+bs.watch(appPath.appFolderPath + appPath.sassFolderName + '**/*.scss', function (event, file) {
   if (event === 'change') {
     sass.render({
       file: appPath.appFolderPath + appPath.sassFolderName + 'style.scss',
