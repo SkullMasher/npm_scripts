@@ -43,11 +43,7 @@
   },
   "dependencies": {
     "jquery": "^3.1.0",
-<<<<<<< HEAD
     "knacss": "^6.0.5",
-=======
-    "knacss": "^6.0.0",
->>>>>>> 7b35f69904912381663bd41d8641b812aa6462d9
     "normalize.css": "^4.2.0"
   }
 }
