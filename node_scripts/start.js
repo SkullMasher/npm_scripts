@@ -14,7 +14,7 @@ let log = console.log.bind(console)
 let appPath = {
   appFolderPath: 'app/',
   cssFolderName: 'css/',
-  sassFolderName: 'sass/',
+  sassFolderName: 'scss/',
   jsFolderName: 'js/',
   imgFolderName: 'css/'
 }
@@ -102,6 +102,7 @@ let startBrowserSync = function () {
   } else {
     return bs.init({
       server: './' + appPath.appFolderPath
+      // proxy: 'http://hl3.hope/~skullmasher/my-project/app'
     })
   }
 }
