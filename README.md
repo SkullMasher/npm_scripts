@@ -16,7 +16,7 @@ Pack your web project for production
 npm run build
 ```
 
-## Struture
+## Structure
 
 	app
 	node_scripts
