@@ -104,8 +104,10 @@ let startBrowserSync = function () {
     })
   } else {
     return bs.init({
-      server: './' + appPath.appFolderPath
-      // proxy: 'http://hl3.hope/~skullmasher/my-project/app'
+      server: {
+        baseDir: './' + appPath.appFolderPath,
+        directory: true
+      }
     })
   }
 }
