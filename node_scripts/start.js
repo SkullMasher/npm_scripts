@@ -14,7 +14,7 @@ let log = console.log.bind(console)
 let appPath = {
   appFolderPath: 'app/',
   cssFolderName: 'css/',
-  sassFolderName: 'scss/',
+  sassFolderName: 'sass/',
   jsFolderName: 'js/',
   imgFolderName: 'css/'
 }
@@ -43,8 +43,11 @@ let greetingMessage = function () {
 
 greetingMessage()
 
-// Reload all browser on HTML change
-bs.watch(appPath.appFolderPath + '*.html').on('change', function () {
+// Reload all browser on HTML & PHP change
+bs.watch(appPath.appFolderPath + '**/*.php').on('change', function () {
+  bs.reload()
+})
+bs.watch(appPath.appFolderPath + '**/*.html').on('change', function () {
   bs.reload()
 })
 
@@ -101,8 +104,10 @@ let startBrowserSync = function () {
     })
   } else {
     return bs.init({
-      server: './' + appPath.appFolderPath
-      // proxy: 'http://hl3.hope/~skullmasher/my-project/app'
+      server: {
+        baseDir: './' + appPath.appFolderPath,
+        directory: true
+      }
     })
   }
 }

@@ -16,7 +16,7 @@ Pack your web project for production
 npm run build
 ```
 
-## Struture
+## Structure
 
 	app
 	node_scripts
@@ -36,4 +36,4 @@ npm run build
 
 ## Motivation behind this project
 
-Got sick of random error I did not understand popping in my terminal each time I used Grunt or Gulp. So I started researching how to do my own tooling scripts. They are not has good has the other tooling solution for sure but I prefer to have a solution that I can understand and refind with ease.
+Got sick of random error I did not understand popping in my terminal each time I used Grunt or Gulp. So I started researching how to do my own tooling scripts. They are not has good has the other tooling solution for sure but I prefer to have a solution that I can understand and refined with ease.
